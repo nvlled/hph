@@ -19,9 +19,10 @@ class HPH {
             $attributes = [];
         }
 
+        // TODO: indent nested tags
         $attrs = self::asAttributes($attributes);
         if ($content == null) {
-            echo "<$name $attrs />";
+            echo "<$name $attrs/>";
         } else {
             if (is_callable($content)) {
                 echo "<$name $attrs>";
@@ -39,7 +40,7 @@ class HPH {
             $v = htmlspecialchars($v);
             $str .= "$k='$v' ";
         }
-        return $str;
+        return trim($str);
     }
 }
 ?>
