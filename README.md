@@ -12,8 +12,7 @@ $hph = new HPH();
 $hph->tagName($attributes, $content)
 
 ```
-$attributes and $content are both optional
-$attributes are simply associative arrays
+$attributes and $content are both optional. $attributes are simply associative arrays
 in place of html tags.
 ```
 HPH::input(["name"=>"username", "type"=>"text"]);
@@ -59,7 +58,7 @@ To avoid doing things like:
 someCode();
 moreCode();
 ?>
-  <div>some html <?= $somevar ?></div>
+  <div id="thing">some text <?= $somevar ?></div>
 <?php
 otherCode();
 ```
@@ -71,7 +70,7 @@ So, instead:
 ```php
 someCode();
 moreCode();
-HPH::div(["id"=>"thing"], $somevar);
+HPH::div(["id"=>"thing"], "some text $somevar");
 otherCode();
 ```
 But why not just echo an string?
@@ -79,18 +78,19 @@ But why not just echo an string?
 ```php
 someCode();
 moreCode();
-echo "<div>some $somevar</div>";
+echo "<div id='thing'>some text $somevar</div";
 otherCode();
 ```
 
 Because, html string aren't syntax highlighted
 and becomes intractable especially when it's several
-lines long.
+lines long. Plus, mixing php and
+html messes up autoindentation on some text editors.
 
 Another reason is that writing html could be entirely
 avoided, and everything could be written in PHP.
 It is left to the discretion of the reader
-whether this is a good thing or not!
+whether this is a good thing or not! 
 
 See the examples directory for more examples.
 
