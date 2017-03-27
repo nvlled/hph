@@ -97,6 +97,15 @@ See the examples directory for more examples.
 ## Issues
 The hph code are slightly more verbose compared to the html ones.
 And although errors can be caught by the php interpreter,
-they are sometimes obstuse. For instance, using a = instead of =>
-in associative arrays.
+they are sometimes obstuse. 
 
+For instance, using a = instead of =>
+in associative arrays. This can be solved using the 
+helper function attrs:
+
+```HPH::input(attrs("id", "username", "type" "text))```
+
+Another pain point is PHP's closure, which requires
+explicit variable capturing. This can be repetitive
+on blocks with deep nesting. See example/form-closure.php on how
+this issue is slightly addressed.
