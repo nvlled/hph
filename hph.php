@@ -92,10 +92,12 @@ function isThingyTag($tagName) {
 
 class HPH {
     private $env = NULL;
+    private $level = 0;
 
     function __construct($parent=null) {
         $this->env = new Dict();
         if ($parent instanceof HPH) {
+            $this->level = $parent->level+1;
             $this->env->parent = $parent->env;
         }
     }
@@ -135,13 +137,15 @@ class HPH {
         if ($content == null && isThingyTag($name)) {
             echo "<$name $attrs/>";
         } else {
+            $indent = str_repeat("  ", $this->level);
             if (is_callable($content)) {
-                echo "<$name $attrs>";
                 $hph = new HPH($this);
+                echo "$indent<$name $attrs>\n";
+                echo $indent;
                 $content->bindTo($hph)($hph->env);
-                echo "</$name>";
+                echo "$indent</$name>\n";
             } else {
-                echo "<$name $attrs>".$content."</$name>";
+                echo "$indent<$name $attrs>".$content."</$name>\n";
             }
         }
     }

@@ -9,9 +9,9 @@ HPH::form(['action'=>''], function() {
 });
 
 HPH::form(['action'=>'', 'method'=>'post'], function() {
-    HPH::label(['for'=>'POST-name'], 'Name: ');
-    HPH::input(['id'=>'POST-name', 'type'=>'text']);
-    HPH::input(['type'=>'submit', 'value'=>'Save']);
+    $this->label(['for'=>'POST-name'], 'Name: ');
+    $this->input(['id'=>'POST-name', 'type'=>'text']);
+    $this->input(['type'=>'submit', 'value'=>'Save']);
 });
 
 HPH::form(['action'=>'', 'method'=>'post'], function() {
