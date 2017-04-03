@@ -138,14 +138,16 @@ class HPH {
             echo "<$name $attrs/>";
         } else {
             $indent = str_repeat("  ", $this->level);
-            if (is_callable($content)) {
+            if (is_callable($content) && !is_string($content)) {
                 $hph = new HPH($this);
                 echo "$indent<$name $attrs>\n";
                 echo $indent;
                 $content->bindTo($hph)($hph->env);
                 echo "$indent</$name>\n";
             } else {
-                echo "$indent<$name $attrs>".$content."</$name>\n";
+                echo "$indent<$name $attrs>";
+                echo htmlspecialchars($content);
+                echo "</$name>\n";
             }
         }
     }
