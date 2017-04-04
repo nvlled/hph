@@ -40,8 +40,8 @@ HPH::form(["method"=>"POST"], function() {
 //   <input type="submit" />
 // </form>
 ```
-It should be noted that $this can be used inside the content function,
-to void creating new instances of HPH. The following produces
+It should be noted that $this should be used inside the content function
+to produce a formatted HTML output. The following produces
 the same output as before:
 ```
 HPH::form(["method"=>"POST"], function() {
@@ -107,5 +107,6 @@ helper function attrs:
 
 Another pain point is PHP's closure, which requires
 explicit variable capturing. This can be repetitive
-on blocks with deep nesting. See example/form-closure.php on how
+on blocks with deep nesting. See example/form-closure.php
+and example/scoping.php on how
 this issue is slightly addressed.
