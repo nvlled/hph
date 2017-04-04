@@ -160,5 +160,7 @@ class HPH {
         }
         return trim($str);
     }
+
+    function __invoke($fn) { $fn->bindTo($this)($this->env); }
 }
 ?>
