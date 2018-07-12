@@ -2,7 +2,7 @@
 reversed php
 
 # Usage
-```
+```php
 HPH::tagName($attributes, $content)
 HPH::tagName($content)
 HPH::tagName($attributes)
@@ -14,19 +14,19 @@ $hph->tagName($attributes, $content)
 ```
 $attributes and $content are both optional. $attributes are simply associative arrays
 in place of html tags.
-```
+```php
 HPH::input(["name"=>"username", "type"=>"text"]);
 // equivalent to <input name="username" type="text />
 ```
 $content can either be a null, string or a function.
-```
+```php
 HPH::h1("Title");
 HPH::hr();
 HPH::p("Text content");
 ```
 To represent nested html tags, functions must be used:
 
-```
+```php
 HPH::form(["method"=>"POST"], function() {
   echo "message: ";
   HPH->input("name"=>"message", "value"=>"message here");
@@ -43,7 +43,7 @@ HPH::form(["method"=>"POST"], function() {
 It should be noted that $this should be used inside the content function
 to produce a formatted HTML output. The following produces
 the same output as before:
-```
+```php
 HPH::form(["method"=>"POST"], function() {
   echo "message: ";
   $this->input("name"=>"message", "value"=>"message here");
